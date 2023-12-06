@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/index" method="post">
+        <input type="text" name="heading" required autocomplete="off">
+        <input type="text" name="body" id="" required autocomplete="off">
+        <input type="submit">
+    </form>
+<div id="data-container">
+    <%- include ("partials/data.ejs") %>
+</div>
+
+
+                        <script src="./script/script.js"></script>
+</body>
+
+</html>
