@@ -17,9 +17,14 @@
     <% if (storage.length> 0) { %>
         <% storage.forEach((element, index)=> { %>
             <div>
+                <form action="/visit" method="post">
+                <a href="" onclick="triggerSubmission()">
+                    <input type="hidden" name="index" id="" value=<%=index %>>
                 <h1>
                     <%= element.heading %>
                 </h1>
+                </a>
+                </form>
                 <div>
                     <%= element.body %>
                 </div>

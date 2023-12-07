@@ -43,6 +43,8 @@ app.post("/delete",(req,res)=>{
   }
 })
 
-
+app.post("/visit",(req,res)=>{
+  console.log("hello");
+})
 
 app.listen(3000, () => console.log("http://localhost:3000/"));
