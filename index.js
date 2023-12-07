@@ -43,8 +43,15 @@ app.post("/delete",(req,res)=>{
   }
 })
 
-app.post("/visit",(req,res)=>{
-  console.log("hello");
-})
+// app.post("/visit",(req,res)=>{
+//   console.log("hello");
+// })
+
+app.get("/visit/:id",(req,res)=>{
+const id=req.params.id *1
+const data=storage[id];
+// res.send(data)
+res.render("blog",{data})
+});
 
 app.listen(3000, () => console.log("http://localhost:3000/"));
