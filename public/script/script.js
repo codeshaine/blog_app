@@ -6,3 +6,9 @@ if(confirmation)
   form.submit();
 }
 
+function triggerUpdate(clicked) {
+  let form = clicked.closest("form");
+form.submit();
+}
+
+

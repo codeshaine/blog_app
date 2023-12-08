@@ -2,47 +2,41 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 </head>
 
 <body>
-    <form action="/" method="post">
-        <input type="text" name="heading" required autocomplete="off">
-        <input type="text" name="body" id="" required autocomplete="off">
-        <input type="submit">
-    </form>
-<div id="data-container">
-    <% if (storage.length> 0) { %>
-        <% storage.forEach((element, index)=> { %>
-            <div>
-                
-                <a href="/visit/<%= index %>" >
-                    <input type="hidden" name="index" id="" value=<%=index %>>
-                <h1>
-                    <%= element.heading %>
-                </h1>
-                </a>
-    
+    <a href="/create">create</a>
+
+    <div id="data-container">
+        <% if (storage.length> 0) { %> <% storage.forEach((element, index)=> { %>
                 <div>
-                    <%= element.body %>
+                    <a href="/visit/<%= index %>">
+                        <input type="hidden" name="index" id="" value="<%= index %>">
+                        <h1>
+                            <%= element.heading %>
+                        </h1>
+                    </a>
+
+                    <div>
+                        <%= element.body %>
+                    </div>
+                    <form action="/delete" method="post">
+                        <input type="hidden" name="index" id="" value="<%= index %>">
+                        <span class="triggerSpan" onclick="triggerSubmission(this)">
+                            delete
+                        </span>
+                    </form>
+                    <a href="/update/<%= index %>">update</a>
                 </div>
-                <form action="/delete" method="post">
-                    <input type="hidden" name="index" id="" value=<%= index %>>
-                    <span  class="triggerSpan" onclick="triggerSubmission(this)">
-                        delete  
-                    </span>
-                </form>
-            </div>
-            <% }); %>
-                <% } else { %>
-                    <div>No data available</div>
-                    <% } %>
-</div>
+                <% });} else { %>
+                        <div>No data available</div>
+                        <% } %>
+    </div>
 
-
-                        <script src="./script/script.js"></script>
+    <script src="./script/script.js"></script>
 </body>
 
 </html>
