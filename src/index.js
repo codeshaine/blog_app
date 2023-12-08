@@ -1,12 +1,14 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
-app.use(express.static("public"));
+app.set("views", path.join(__dirname, "../views"));   //cause this file is inside the src
+app.use(express.static(path.join(__dirname,"../public")));  //cause this file is inside the src
 
 let storage = [];
-
+app.set("views", path.join(__dirname, "../views"));
 function obj(reqBody) {
   return {
     heading: reqBody.heading,
@@ -53,7 +55,7 @@ app.post("/update/:id", (req, res) => {
   } else {
     if(!req.body.heading=="") storage[index].heading = req.body.heading;
      if(!req.body.body=="") storage[index].body = req.body.body;
-    
+
   }
   res.redirect("/");
 });
