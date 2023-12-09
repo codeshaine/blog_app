@@ -13,8 +13,8 @@
     <div id="data-container">
         <% if (storage.length> 0) { %> <% storage.forEach((element, index)=> { %>
                 <div>
-                    <a href="/visit/<%= index %>">
-                        <input type="hidden" name="index" id="" value="<%= index %>">
+                    <a href="/visit/<%= element.id %>">
+                        <!-- <input type="hidden" name="index" id="" value=""> -->
                         <h1>
                             <%= element.heading %>
                         </h1>
@@ -24,12 +24,12 @@
                         <%= element.body %>
                     </div>
                     <form action="/delete" method="post">
-                        <input type="hidden" name="index" id="" value="<%= index %>">
+                        <input type="hidden" name="id" id="" value="<%= element.id %>">
                         <span class="triggerSpan" onclick="triggerSubmission(this)">
                             delete
                         </span>
                     </form>
-                    <a href="/update/<%= index %>">update</a>
+                    <a href="/update/<%= element.id %>">update</a>
                 </div>
                 <% });} else { %>
                         <div>No data available</div>

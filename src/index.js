@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const {v4:uuid}=require("uuid")
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -11,6 +12,7 @@ let storage = [];
 app.set("views", path.join(__dirname, "../views"));
 function obj(reqBody) {
   return {
+    id:uuid(),
     heading: reqBody.heading,
     body: reqBody.body,
   };
@@ -24,13 +26,14 @@ app.get("/create", (req, res) => {
 });
 
 app.get("/update/:id", (req, res) => {
-  let id = req.params.id;
+  const id = req.params.id;
   res.render("update", { id });
 });
 
 app.get("/visit/:id", (req, res) => {
-  const id = req.params.id * 1;
-  const data = storage[id];
+  const id=req.params.id
+  const index=storage.findIndex(item=>item.id==id)
+  const data = storage[index];
   res.render("blog", { data });
 });
 
@@ -49,7 +52,8 @@ app.post("/create", (req, res) => {
 });
 
 app.post("/update/:id", (req, res) => {
-  const index = parseInt(req.params.id, 10);
+  const id=req.params.id
+ const index = storage.findIndex((item) => item.id == id);
   if (isNaN(index) || index < 0 || index >= storage.length) {
     console.log("id not found");
   } else {
@@ -61,7 +65,8 @@ app.post("/update/:id", (req, res) => {
 });
 
 app.post("/delete", (req, res) => {
-  const index = req.body.index;
+  const id= req.body.id;
+  const index=storage.findIndex(item=>item.id==id)
   if (index >= 0 && index < storage.length) {
     storage.splice(index, 1);
     console.log("deleted");
