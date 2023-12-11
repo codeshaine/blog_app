@@ -5,12 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="/public/styles/output.css"> -->
     <link rel="stylesheet" href="/styles/output.css">
 </head>
 
 <body>
-    <a class="underline text-6xl text-cyan-800" href="/create">create</a>
+    <a class=" text-6xl text-cyan-800" href="/create">create</a>
 
     <div id="data-container">
         <% if (storage.length> 0) { %> <% storage.forEach((element, index)=> { %>
@@ -23,8 +22,13 @@
                     </a>
 
                     <div>
-                        <%= element.body %>
+                        <%= element.firstPara %>
                     </div>
+                    <% if(!element.secondPara=='') { %>
+                    <div>
+                        <%= element.secondPara %>
+                    </div>
+                <% } %>
                     <form action="/delete" method="post">
                         <input type="hidden" name="id" id="" value="<%= element.id %>">
                         <span class="triggerSpan" onclick=triggerSubmission(this)>
