@@ -5,11 +5,10 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "../views"));   //cause this file is inside the src
-app.use(express.static(path.join(__dirname,"../public")));  //cause this file is inside the src
-
+app.set("views",path.join(__dirname,"./src/views"))
+// app.use(express.static(path.join("public")));
+app.use(express.static(path.join(__dirname, "public")));
 let storage = [];
-app.set("views", path.join(__dirname, "../views"));
 function obj(reqBody) {
   return {
     id:uuid(),
@@ -19,7 +18,7 @@ function obj(reqBody) {
 }
 
 app.get("/", (req, res) => {
-  res.render("index", { storage });
+  res.render("home", { storage });
 });
 app.get("/create", (req, res) => {
   res.render("create");
