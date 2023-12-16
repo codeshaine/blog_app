@@ -16,9 +16,15 @@ router.get("/create", (req, res) => {
   res.render("create");
 });
 
-router.get("/update/:id", (req, res) => {
+router.get("/update/:id", async (req, res) => {
   const id = req.params.id;
-  res.render("update", { id });
+  try{
+    const storage= await blog.findOne({id:id});
+  res.render("update", { storage });
+  }catch(err){
+     console.log(`error occured ${err}`);
+  }
+ // res.render("update", { id });
 });
 
 
@@ -29,10 +35,10 @@ router.get("/visit/:id", async (req, res) => {
   let data;
   try {
     data = await blog.findOne({ id: id });
+    res.render("blog", { data });
   } catch (err) {
     console.log(`error occured ${err}`);
   }
-  res.render("blog", { data });
 });
 
 

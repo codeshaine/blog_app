@@ -24,11 +24,7 @@
                     <div>
                         <%= element.firstPara %>
                     </div>
-                    <% if(!element.secondPara=='') { %>
-                    <div>
-                        <%= element.secondPara %>
-                    </div>
-                <% } %>
+                    
                     <form action="/delete" method="post">
                         <input type="hidden" name="id" id="" value="<%= element.id %>">
                         <span class="triggerSpan" onclick=triggerSubmission(this)>

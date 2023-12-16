@@ -15,5 +15,4 @@ app.use("/",require('./src/routes/homeRoute'))
 app.use("/",require('./src/routes/otherRoute'))
 
 
-
 app.listen(3000, () => console.log("http://localhost:3000/"));

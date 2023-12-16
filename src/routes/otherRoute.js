@@ -24,7 +24,7 @@ router.post("/update/:id", (req, res) => {
  async function updateValue(key, value) {
    try {
      updateQuery = { $set: { [key]: value } };
-     if (value !== "") await blog.updateOne({ id: id }, updateQuery);
+      await blog.updateOne({ id: id }, updateQuery);
    } catch (err) {
      console.log(`updataion error: ${err}`);
    }

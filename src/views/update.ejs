@@ -8,11 +8,11 @@
   </head>
 
   <body>
-    <form action="/update/<%= id %>" method="post">
-    <input type="text" name="heading"  autocomplete="off">
-    <input type="text" name="image" autocomplete="off">
-    <input type="text" name="firstPara" id="" autocomplete="off">
-    <input type="text" name="secondPara" id="" autocomplete="off">
+    <form action="/update/<%= storage.id %>" method="post">
+    <input type="text" name="heading"  required value="<%= storage.heading %>">
+    <input type="text" name="image"   value="<%= storage.image %>" placeholder="Enter a valid url">
+    <input type="text" name="firstPara" id="" required value="<%= storage.firstPara %>" >
+    <input type="text" name="secondPara" id=""  value="<%= storage.secondPara %>">
     <input type="submit">
     </form>
   </body>
