@@ -4,16 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/styles/output.css">
+    <!-- <link rel="stylesheet" href="/styles/output.css" /> -->
   </head>
 
   <body>
     <form action="/update/<%= storage.id %>" method="post">
-    <input type="text" name="heading"  required value="<%= storage.heading %>">
-    <input type="text" name="image"   value="<%= storage.image %>" placeholder="Enter a valid url">
-    <input type="text" name="firstPara" id="" required value="<%= storage.firstPara %>" >
-    <input type="text" name="secondPara" id=""  value="<%= storage.secondPara %>">
-    <input type="submit">
+      <input
+        type="text"
+        name="heading"
+        required
+        value="<%= storage.heading %>"
+      />
+      <input
+        type="text"
+        name="image"
+        value="<%= storage.image %>"
+        placeholder="Enter a valid url"
+      />
+      <input
+        type="text"
+        name="firstPara"
+        id=""
+        required
+        value="<%= storage.firstPara %>"
+      />
+      <input
+        type="text"
+        name="secondPara"
+        id=""
+        value="<%= storage.secondPara %>"
+      />
+      <input
+        id="author"
+        type="text"
+        name="author"
+        id=""
+        autocomplete="off"
+        value="<%= storage.author %>"
+      />
+      <input type="submit" />
     </form>
   </body>
 </html>

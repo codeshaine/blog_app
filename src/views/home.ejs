@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/styles/output.css">
-</head>
+    <!-- <link rel="stylesheet" href="/styles/output.css" /> -->
+  </head>
 
-<body>
-    <a class=" text-6xl text-cyan-800" href="/create">create</a>
+  <body>
+    <a class="text-6xl text-cyan-800" href="/create">create</a>
 
     <div id="data-container">
-        <% if (storage.length> 0) { %> <% storage.forEach((element, index)=> { %>
-                <div>
-                    <a href="/visit/<%= element.id %>">
-                        <!-- <input type="hidden" name="index" id="" value=""> -->
-                        <h1>
-                            <%= element.heading %>
-                        </h1>
-                    </a>
+      <% if (storage.length> 0) { %> <% storage.forEach((element, index)=> { %>
+      <div>
+        <a href="/visit/<%= element.id %>">
+          <!-- <input type="hidden" name="index" id="" value=""> -->
+          <h1><%= element.heading %></h1>
+        </a>
 
-                    <div>
-                        <%= element.firstPara %>
-                    </div>
-                    
-                    <form action="/delete" method="post">
-                        <input type="hidden" name="id" id="" value="<%= element.id %>">
-                        <span class="triggerSpan" onclick=triggerSubmission(this)>
-                            delete
-                        </span>
-                    </form>
-                    <a href="/update/<%= element.id %>">update</a>
-                </div>
-                <% });} else { %>
-                        <div>No data available</div>
-                        <% } %>
+        <div><%= element.firstPara %></div>
+        <div><%= element.author %></div>
+        <div>
+          <%= new Intl.DateTimeFormat('en-US', { year: 'numeric', month:
+          '2-digit', day: '2-digit', hour: '2-digit', minute:
+          '2-digit'}).format(element.updatedAt) %>
+        </div>
+
+        <form action="/delete" method="post">
+          <input type="hidden" name="id" id="" value="<%= element.id %>" />
+          <span class="triggerSpan" onclick="triggerSubmission(this)">
+            delete
+          </span>
+        </form>
+        <a href="/update/<%= element.id %>">update</a>
+      </div>
+      <% });} else { %>
+      <div>No data available</div>
+      <% } %>
     </div>
 
     <script src="./script/script.js"></script>
-</body>
-
+  </body>
 </html>

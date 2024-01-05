@@ -4,18 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/styles/output.css" />
+    <!-- <link rel="stylesheet" href="/styles/output.css" /> -->
   </head>
 
   <body>
     <% if(data&&data.heading) { %>
     <h1><%= data.heading %></h1>
     <% } %> <% if(data&& !data.image=="") { %>
-    <img src="<%= data.image %>"/>
+    <img src="<%= data.image %>" />
     <% } %> <% if(data&&data.firstPara) { %>
     <div><%= data.firstPara %></div>
     <% } %> <% if(data&&data.secondPara) { %>
     <div><%= data.secondPara %></div>
+    <% } %> <% if(data&&data.author) { %>
+    <div><%= data.author %></div>
+    <% } %> <% if(data&&data.updatedAt) {%>
+    <div>
+      <%= new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit',
+      day: '2-digit', hour: '2-digit', minute:
+      '2-digit'}).format(data.updatedAt) %>
+    </div>
     <% } %>
   </body>
 </html>
