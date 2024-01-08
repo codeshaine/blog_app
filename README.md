@@ -36,7 +36,6 @@ npm run start
 <li>Node Js</li>
 <li>Express</li>
 <li>EJS</li>
-<li>Tailwind</li>
 <li>Mongo db</li>
 <br>
 

@@ -4,66 +4,72 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../../public/styles/style.css" />
+    <link rel="stylesheet" href="./styles/home.css" />
+    <!-- fonts section -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-    <div>
-      <a href="/create">create</a>
-    </div>
+    <div class="container">
+      <h1>My Blogs</h1>
+      <div class="create">
+        <a href="/create">New Post</a>
+      </div>
 
-    <div id="blogs">
-      <h1>Blogs</h1>
-
-      <div class="">
-        <div>
-          <div>
-            <% if (storage.length> 0) { %> <% storage.forEach((element, index)=>
-            { %>
-            <article>
-              <div>
-                <time datetime="2020-03-16" class="text-gray-500"
-                  ><%= new Intl.DateTimeFormat('en-US', { year: 'numeric',
-                  month: '2-digit', day: '2-digit', hour: '2-digit', minute:
-                  '2-digit'}).format(element.updatedAt) %></time
-                >
-              </div>
-              <div>
-                <h3>
-                  <a href="/visit/<%= element.id %>">
-                    <span class="absolute inset-0"></span>
-                    <%= element.heading %>
-                  </a>
-                </h3>
-                <p><%= element.firstPara %></p>
-              </div>
-              <div>
-                <div>
-                  <p><%= element.author %></p>
-                </div>
-              </div>
-              <div>
-                <a href="/update/<%= element.id %>">update</a>
-                <form action="/delete" method="post">
-                  <input
-                    type="hidden"
-                    name="id"
-                    id=""
-                    value="<%= element.id %>"
-                  />
-                  <span class="triggerSpan" onclick="triggerSubmission(this)">
-                    delete
-                  </span>
-                </form>
-              </div>
-            </article>
-            <% });} else { %>
-            <div>No data available</div>
-            <% } %>
-
-            <!-- More posts... -->
+      <div class="blog-container">
+        <% if (storage.length> 0) { %> <% storage.forEach((element, index)=> {
+        %>
+        <article class="blog">
+          <div class="time">
+            <time datetime="2020-03-16" class="text-gray-500"
+              ><%= new Intl.DateTimeFormat('en-US', { year: 'numeric', month:
+              '2-digit', day: '2-digit', hour: '2-digit', minute:
+              '2-digit'}).format(element.updatedAt) %></time
+            >
           </div>
-        </div>
+          <div>
+            <h3 class="blog-heading">
+              <a href="/visit/<%= element.id %>">
+                <span class="absolute inset-0"></span>
+                <%= element.heading %>
+              </a>
+            </h3>
+            <p><%= element.firstPara %></p>
+          </div>
+          <div>
+            <div class="author">
+              <p>By: <%= element.author %></p>
+            </div>
+          </div>
+          <div class="buttons">
+            <div class="btn-u">
+              <a href="/update/<%= element.id %>">Edit</a>
+            </div>
+            <form action="/delete" method="post">
+              <div class="btn-d">
+                <input
+                  type="hidden"
+                  name="id"
+                  id=""
+                  value="<%= element.id %>"
+                />
+                <span class="triggerSpan" onclick="triggerSubmission(this)">
+                  Delete
+                </span>
+              </div>
+            </form>
+          </div>
+        </article>
+        <% });} else { %>
+        <div class="no-data">No data available</div>
+        <% } %>
+
+        <!-- More posts... -->
       </div>
     </div>
 
