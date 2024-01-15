@@ -1,11 +1,11 @@
-# blog_app
+# Blog_app
 
-### Description:
+### Description :
 
  <p>This is a web app which lets you create a simple and fixed-template blogs which contains heading,image and two paragraph sections. This application is built just for learning purpose and feel free to use the code for learning purpose.</p>
  <br>
 
-### To run locally follow the instructions:
+### To run locally follow the instructions :
 
  <li>Clone this repository using this command</li>
 
@@ -31,7 +31,7 @@ npm run start
 
 <br>
 
-### The technologies used
+### The technologies used :
 
 <li>Node Js</li>
 <li>Express</li>
@@ -39,4 +39,10 @@ npm run start
 <li>Mongo db</li>
 <br>
 
-Thankyou for reading 😁😁
+### Visuals :
+
+<div align="center">
+<img src="./public/images/Home.png" alt="Home page" width="70%">
+<img src="./public/images/blog.png" alt="Home page" width="70%">
+<p>Thankyou for reading <3</p>
+</div>

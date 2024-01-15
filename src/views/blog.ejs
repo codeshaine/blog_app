@@ -3,26 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title><%= (data) ? data.heading : "Error" %></title>
   </head>
+  <style>
+    ::selection {
+      background-color: #000; /* Set your desired background color */
+      color: #fff; /* Set the text color for the selection */
+    }
+    * {
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+    }
+    body {
+      margin: 4rem;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      padding: 2.5rem;
+      width: 80vw;
+      box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.2);
+    }
+    .container h1 {
+      font-size: 2.7rem;
+      margin-bottom: 1rem;
+      font-family: "Roboto", sans-serif;
+    }
+
+    .container div {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .image {
+      width: 50%;
+      height: 20rem;
+      margin: 0 auto;
+    }
+    .image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .sub div {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .sub div:nth-child(2) {
+      font-size: 0.7rem;
+    }
+  </style>
 
   <body>
-    <% if(data&&data.heading) { %>
-    <h1><%= data.heading %></h1>
-    <% } %> <% if(data&& !data.image=="") { %>
-    <img src="<%= data.image %>" />
-    <% } %> <% if(data&&data.firstPara) { %>
-    <div><%= data.firstPara %></div>
-    <% } %> <% if(data&&data.secondPara) { %>
-    <div><%= data.secondPara %></div>
-    <% } %> <% if(data&&data.author) { %>
-    <div><%= data.author %></div>
-    <% } %> <% if(data&&data.updatedAt) {%>
-    <div>
-      <%= new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit',
-      day: '2-digit', hour: '2-digit', minute:
-      '2-digit'}).format(data.updatedAt) %>
+    <div class="container">
+      <% if(data){ %> <% if(data.heading!=="") { %>
+      <h1><%= data.heading %></h1>
+      <% } %> <% if(data.image!=="") { %>
+      <div class="image">
+        <img src="<%= data.image %>" />
+      </div>
+      <% } %> <% if(data.firstPara!=="") { %>
+      <div><p><%= data.firstPara %></p></div>
+      <% } %> <% if(data.secondPara!=="") { %>
+      <div><p><%= data.secondPara %></p></div>
+      <% } %>
+      <div class="sub">
+        <% if(data.author!=="") { %>
+        <div><span><%= data.author %></span></div>
+        <% } %> <% if(data.updatedAt!=="") {%>
+        <div>
+          <span>
+            <%= new Intl.DateTimeFormat('en-US', { year: 'numeric', month:
+            '2-digit', day: '2-digit', hour: '2-digit', minute:
+            '2-digit'}).format(data.updatedAt) %>
+          </span>
+        </div>
+      </div>
+
+      <% } %> <% } else { %>
+      <h1 style="text-align: center">404 Page not found</h1>
+      <% } %>
     </div>
-    <% } %>
   </body>
 </html>
