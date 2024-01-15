@@ -3,46 +3,125 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="/styles/output.css" /> -->
+    <title>Update</title>
+    <!-- fonts section -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+      }
+      body {
+        margin: 4rem;
+        display: flex;
+        justify-content: center;
+      }
+
+      .conatiner {
+        font-size: 0.9rem;
+        padding: 2.5rem;
+
+        width: 80vw;
+        /* border: solid 1px rgba(0, 0, 0, 0.2); */
+        box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .new-head {
+        font-family: "Roboto", sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 1.3rem;
+      }
+
+      #heading,
+      #image,
+      #author {
+        border-radius: 5px;
+        width: 100%;
+        height: 2rem;
+        font-size: 0.9rem;
+        border: solid 1px rgba(0, 0, 0, 0.5);
+      }
+
+      textarea {
+        width: 100%;
+        height: 14rem;
+        border-radius: 5px;
+        border: solid 1px rgba(0, 0, 0, 0.5);
+        font-size: 0.9rem;
+      }
+
+      .submit {
+        border: none;
+        background-color: #59cd90;
+        color: white;
+        font-size: 1.1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+        padding: 0.9rem 1.8rem;
+        border-radius: 5px;
+        margin-top: 0.5rem;
+      }
+    </style>
   </head>
 
   <body>
-    <form action="/update/<%= storage.id %>" method="post">
-      <input
-        type="text"
-        name="heading"
-        required
-        value="<%= storage.heading %>"
-      />
-      <input
-        type="text"
-        name="image"
-        value="<%= storage.image %>"
-        placeholder="Enter a valid url"
-      />
-      <input
-        type="text"
-        name="firstPara"
-        id=""
-        required
-        value="<%= storage.firstPara %>"
-      />
-      <input
-        type="text"
-        name="secondPara"
-        id=""
-        value="<%= storage.secondPara %>"
-      />
-      <input
-        id="author"
-        type="text"
-        name="author"
-        id=""
-        autocomplete="off"
-        value="<%= storage.author %>"
-      />
-      <input type="submit" />
-    </form>
+    <% if(storage){ %>
+    <div class="conatiner">
+      <h1 class="new-head">Update Post</h1>
+      <form action="/update/<%= storage.id %>" method="post">
+        <input
+          id="heading"
+          type="text"
+          name="heading"
+          required
+          value="<%= storage.heading %>"
+        />
+        <input
+          id="image"
+          type="text"
+          name="image"
+          value="<%= storage.image %>"
+          placeholder="Enter a valid url"
+        />
+        <textarea id="firstPara" name="firstPara" id="" required>
+<%= storage.firstPara %>
+        </textarea>
+        <textarea id="secondPara" name="secondPara" id="">
+<%= storage.secondPara %></textarea
+        >
+        <input
+          id="author"
+          type="text"
+          name="author"
+          id=""
+          autocomplete="off"
+          value="<%= storage.author %>"
+        />
+        <input class="submit" type="submit" />
+      </form>
+    </div>
+    <% } else{%>
+    <h1>404 Page not found</h1>
+    <% } %>
   </body>
 </html>

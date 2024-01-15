@@ -3,47 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Create</title>
     <link rel="stylesheet" href="./styles/create.css" />
+    <!-- fonts section -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-    <form action="/create" method="post">
-      <label for="heading">Heading</label>
-      <input
-        id="heading"
-        type="text"
-        name="heading"
-        required
-        autocomplete="off"
-      />
-      <label for="image">Image</label>
-      <input
-        id="image"
-        type="text"
-        name="image"
-        placeholder="Enter a valid url"
-      />
-      <label for="firstPara">First Paragraph</label>
-      <input
-        id="firstPara"
-        type="text"
-        name="firstPara"
-        id=""
-        required
-        autocomplete="off"
-      />
-      <label for="secondPara">Second Paragraph</label>
-      <input
-        id="secondPara"
-        type="text"
-        name="secondPara"
-        id=""
-        autocomplete="off"
-      />
-      <label for="author">author</label>
-      <input id="author" type="text" name="author" id="" autocomplete="off" />
-      <input type="submit" />
-    </form>
+    <div class="conatiner">
+      <h1 class="new-head">New Post</h1>
+      <form action="/create" method="post">
+        <input
+          id="heading"
+          type="text"
+          name="heading"
+          required
+          autocomplete="off"
+          placeholder="Heading"
+        />
+
+        <input
+          id="image"
+          type="text"
+          name="image"
+          placeholder="Enter a valid url"
+        />
+
+        <textarea
+          id="firstPara"
+          name="firstPara"
+          placeholder="Enter somthing..."
+          required
+        ></textarea>
+
+        <textarea
+          name="secondPara"
+          id="secondPara"
+          placeholder="(optional)"
+        ></textarea>
+
+        <input
+          id="author"
+          type="text"
+          name="author"
+          autocomplete="off"
+          placeholder="Author"
+        />
+
+        <input class="submit" type="submit" />
+      </form>
+    </div>
   </body>
 </html>
